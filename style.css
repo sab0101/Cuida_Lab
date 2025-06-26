@@ -1,11 +1,11 @@
-/* Estilos Generales */
+/* Estilos Generales - Paleta de Protección y Armonía (Verde claro) */
 :root {
-    --primary-color: #007BFF;
-    --secondary-color: #6C757D;
-    --background-color: #f8f9fa;
-    --text-color: #343a40;
-    --light-gray: #e9ecef;
-    --white: #fff;
+    --primary-color: #8BC34A; /* Verde más claro para botones y acentos */
+    --secondary-color: #D2B48C; /* Tostado para subtítulos */
+    --background-color: #F5F5DC; /* Crema para fondos */
+    --text-color: #333333; /* Texto principal oscuro */
+    --light-gray: #ECE6C4; /* Un tono crema más oscuro para tarjetas */
+    --white: #FFFFFF;
     --font-poppins: 'Poppins', sans-serif;
 }
 
@@ -22,39 +22,22 @@ body {
     background-color: var(--background-color);
 }
 
-.container {
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 0 20px;
-}
-
-h1, h2, h3, h4 {
-    font-weight: 700;
-    color: #212529;
-    margin-bottom: 20px;
-}
-
-p {
-    margin-bottom: 15px;
-}
-
-a {
-    text-decoration: none;
-    color: var(--primary-color);
-}
-
-ul {
-    list-style: none;
-}
-
+/* Regla general para el padding de las secciones */
 section {
     padding: 80px 0;
 }
 
-.section-subtitle {
+/* --- Ajuste de márgenes para el contenido principal --- */
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 40px; /* Este es el margen lateral */
+}
+
+/* --- Ajuste para los títulos de sección (h2) --- */
+section h2 {
     text-align: center;
-    color: var(--secondary-color);
-    font-size: 1.2rem;
+    margin-top: 80px; /* Margen superior para separarlo del contenido de arriba */
     margin-bottom: 50px;
 }
 
@@ -69,7 +52,7 @@ section {
 }
 
 .btn-primary:hover {
-    background-color: #0056b3;
+    background-color: #689F38; /* Tono más oscuro al pasar el cursor */
 }
 
 .btn-primary-large {
@@ -89,7 +72,7 @@ section {
 
 .btn-secondary {
     background-color: var(--secondary-color);
-    color: var(--white);
+    color: var(--text-color);
     padding: 12px 25px;
     border-radius: 5px;
     transition: background-color 0.3s ease;
@@ -97,7 +80,7 @@ section {
 }
 
 .btn-secondary:hover {
-    background-color: #5a6268;
+    background-color: #B8860B; /* Tono más oscuro al pasar el cursor */
 }
 
 /* Header */
@@ -180,6 +163,7 @@ header nav ul li a:hover {
 #services {
     background-color: var(--white);
     text-align: center;
+    padding-top: 0; /* AJUSTE PARA ELIMINAR EL ESPACIO SUPERIOR */
 }
 
 .services-grid {
@@ -211,11 +195,6 @@ header nav ul li a:hover {
     background-color: var(--background-color);
 }
 
-#nosotros h2, #empresas h2, #candidatos h2, #blog h2, #aliados-testimonios h2 {
-    text-align: center;
-    margin-bottom: 50px;
-}
-
 .nosotros-content {
     display: flex;
     align-items: center;
@@ -230,7 +209,7 @@ header nav ul li a:hover {
 
 .nosotros-content ul li {
     margin-bottom: 10px;
-    color: var(--secondary-color);
+    color: var(--text-color);
 }
 
 .nosotros-content ul li i {
