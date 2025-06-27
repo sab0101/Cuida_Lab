@@ -19,7 +19,7 @@ body {
     font-family: var(--font-poppins);
     line-height: 1.6;
     color: var(--text-color);
-    background-color: var(--background-color);
+    background-color: #ffffff;
 }
 
 /* Regla general para el padding de las secciones */
@@ -37,8 +37,8 @@ section {
 /* --- Ajuste para los títulos de sección (h2) --- */
 section h2 {
     text-align: center;
-    margin-top: 80px; /* Margen superior para separarlo del contenido de arriba */
-    margin-bottom: 50px;
+    /* Se eliminó el margin-top para que no haya un espacio excesivo */
+    margin-bottom: 50px; /* Se mantuvo el margen inferior para separar del contenido */
 }
 
 /* Botones */
@@ -128,7 +128,7 @@ header nav ul li a:hover {
     background-position: center;
     color: var(--white);
     text-align: center;
-    padding: 150px 0;
+    padding: 150px 0 0; /* AJUSTE CLAVE: Se eliminó el padding inferior */
     position: relative;
 }
 
@@ -163,7 +163,8 @@ header nav ul li a:hover {
 #services {
     background-color: var(--white);
     text-align: center;
-    padding-top: 0; /* AJUSTE PARA ELIMINAR EL ESPACIO SUPERIOR */
+    padding-top: 0; /* Mantiene el ajuste para eliminar el espacio superior */
+    margin-top: 0; /* Asegura que no haya margen extra */
 }
 
 .services-grid {
