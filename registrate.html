@@ -1,0 +1,659 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Regístrate | CuidaLab</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        /* Estilos específicos para la página de registro */
+        :root {
+            --primary-color: #8BC34A;
+            --secondary-color: #D2B48C;
+            --background-color: #F5F5DC;
+            --text-color: #333333;
+            --light-gray: #ECE6C4;
+            --white: #FFFFFF;
+            --font-poppins: 'Poppins', sans-serif;
+            --modal-overlay: rgba(0,0,0,0.7);
+        }
+
+        /* Estilos del modal */
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 2000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: var(--modal-overlay);
+            overflow-y: auto;
+        }
+
+        .modal-content {
+            background-color: var(--white);
+            margin: 5% auto;
+            padding: 30px;
+            border-radius: 10px;
+            width: 80%;
+            max-width: 800px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+            position: relative;
+        }
+
+        .close-modal {
+            position: absolute;
+            top: 15px;
+            right: 25px;
+            font-size: 28px;
+            font-weight: bold;
+            color: var(--text-color);
+            cursor: pointer;
+        }
+
+        .close-modal:hover {
+            color: var(--primary-color);
+        }
+
+        .modal-body {
+            max-height: 70vh;
+            overflow-y: auto;
+            padding: 20px 10px;
+            line-height: 1.6;
+        }
+
+        .modal-body h3 {
+            margin-top: 20px;
+            color: var(--primary-color);
+        }
+
+        .modal-body ul {
+            padding-left: 20px;
+            margin: 15px 0;
+        }
+
+        .policy-date {
+            text-align: right;
+            font-style: italic;
+            margin-top: 30px;
+            color: #666;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <div class="logo">
+                <a href="index.html">CuidaLab</a>
+            </div>
+            <nav>
+                <ul>
+                    <li><a href="index.html#nosotros">Nosotros</a></li>
+                    <li><a href="index.html#empresas">Para Empresas</a></li>
+                    <li><a href="index.html#candidatos">Para Candidatos</a></li>
+                    <li><a href="index.html#blog">Blog</a></li>
+                    <li><a href="registrate.html" class="btn-primary">Regístrate</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <section id="registro">
+        <div class="container">
+            <div class="registro-header">
+                <h1>Completa tu registro</h1>
+                <p>Por favor completa la siguiente información para acceder a todos los beneficios de CuidaLab.</p>
+                <div class="progress-bar">
+                    <div class="progress-step active" data-step="1">1</div>
+                    <div class="progress-line"></div>
+                    <div class="progress-step" data-step="2">2</div>
+                    <div class="progress-line"></div>
+                    <div class="progress-step" data-step="3">3</div>
+                    <div class="progress-line"></div>
+                    <div class="progress-step" data-step="4">4</div>
+                </div>
+            </div>
+
+            <form id="registroForm" class="registro-form">
+                <!-- Paso 1: Información personal -->
+                <div class="form-step active" data-step="1">
+                    <h2>Información Personal</h2>
+                    <div class="form-group">
+                        <label for="nombres">Nombres</label>
+                        <input type="text" id="nombres" name="nombres" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="apellidos">Apellidos</label>
+                        <input type="text" id="apellidos" name="apellidos" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="direccion">Dirección</label>
+                        <input type="text" id="direccion" name="direccion" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="documento">DNI o Carnet de Extranjería</label>
+                        <input type="text" id="documento" name="documento" required>
+                    </div>
+                    <div class="form-buttons">
+                        <button type="button" class="btn-next">Siguiente</button>
+                    </div>
+                </div>
+
+                <!-- Paso 2: Contacto y fecha nacimiento -->
+                <div class="form-step" data-step="2">
+                    <h2>Información de Contacto</h2>
+                    <div class="form-group">
+                        <label for="email">Correo Electrónico</label>
+                        <input type="email" id="email" name="email" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="celular">Número de Celular</label>
+                        <input type="tel" id="celular" name="celular" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="nacimiento">Fecha de Nacimiento</label>
+                        <input type="date" id="nacimiento" name="nacimiento" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="conadis">Tarjeta CONADIS (DNI del familiar que cuidas)</label>
+                        <input type="text" id="conadis" name="conadis" required>
+                    </div>
+                    <div class="form-buttons">
+                        <button type="button" class="btn-prev">Atrás</button>
+                        <button type="button" class="btn-next">Siguiente</button>
+                    </div>
+                </div>
+
+                <!-- Paso 3: Situación académica/laboral -->
+                <div class="form-step" data-step="3">
+                    <h2>Situación Actual</h2>
+                    <div class="form-group">
+                        <label>¿Actualmente estudias?</label>
+                        <div class="radio-group">
+                            <input type="radio" id="estudia-si" name="estudia" value="Sí" required>
+                            <label for="estudia-si">Sí</label>
+                            <input type="radio" id="estudia-no" name="estudia" value="No">
+                            <label for="estudia-no">No</label>
+                        </div>
+                    </div>
+                    <div class="form-group" id="institucion-container" style="display: none;">
+                        <label for="institucion">Nombre de la Universidad o Instituto</label>
+                        <input type="text" id="institucion" name="institucion">
+                    </div>
+
+                    <div class="form-group">
+                        <label>¿Actualmente trabajas?</label>
+                        <div class="radio-group">
+                            <input type="radio" id="trabaja-si" name="trabaja" value="Sí" required>
+                            <label for="trabaja-si">Sí</label>
+                            <input type="radio" id="trabaja-no" name="trabaja" value="No">
+                            <label for="trabaja-no">No</label>
+                        </div>
+                    </div>
+                    <div class="form-group" id="empresa-container" style="display: none;">
+                        <label for="empresa">Nombre de la Empresa</label>
+                        <input type="text" id="empresa" name="empresa">
+                    </div>
+                    <div class="form-group" id="ruc-container" style="display: none;">
+                        <label for="ruc">Número RUC</label>
+                        <input type="text" id="ruc" name="ruc">
+                    </div>
+                    <div class="form-buttons">
+                        <button type="button" class="btn-prev">Atrás</button>
+                        <button type="button" class="btn-next">Siguiente</button>
+                    </div>
+                </div>
+
+                <!-- Paso 4: Resumen y envío -->
+                <div class="form-step" data-step="4">
+                    <h2>Revisa tu información</h2>
+                    <div class="resumen-container">
+                        <div class="resumen-item">
+                            <span class="resumen-label">Nombres:</span>
+                            <span id="resumen-nombres" class="resumen-value"></span>
+                        </div>
+                        <div class="resumen-item">
+                            <span class="resumen-label">Apellidos:</span>
+                            <span id="resumen-apellidos" class="resumen-value"></span>
+                        </div>
+                        <div class="resumen-item">
+                            <span class="resumen-label">Dirección:</span>
+                            <span id="resumen-direccion" class="resumen-value"></span>
+                        </div>
+                        <div class="resumen-item">
+                            <span class="resumen-label">Documento:</span>
+                            <span id="resumen-documento" class="resumen-value"></span>
+                        </div>
+                        <div class="resumen-item">
+                            <span class="resumen-label">Email:</span>
+                            <span id="resumen-email" class="resumen-value"></span>
+                        </div>
+                        <div class="resumen-item">
+                            <span class="resumen-label">Celular:</span>
+                            <span id="resumen-celular" class="resumen-value"></span>
+                        </div>
+                        <div class="resumen-item">
+                            <span class="resumen-label">Fecha Nacimiento:</span>
+                            <span id="resumen-nacimiento" class="resumen-value"></span>
+                        </div>
+                        <div class="resumen-item">
+                            <span class="resumen-label">CONADIS:</span>
+                            <span id="resumen-conadis" class="resumen-value"></span>
+                        </div>
+                        <div class="resumen-item">
+                            <span class="resumen-label">Estudia:</span>
+                            <span id="resumen-estudia" class="resumen-value"></span>
+                        </div>
+                        <div class="resumen-item" id="resumen-institucion-container" style="display: none;">
+                            <span class="resumen-label">Institución:</span>
+                            <span id="resumen-institucion" class="resumen-value"></span>
+                        </div>
+                        <div class="resumen-item">
+                            <span class="resumen-label">Trabaja:</span>
+                            <span id="resumen-trabaja" class="resumen-value"></span>
+                        </div>
+                        <div class="resumen-item" id="resumen-empresa-container" style="display: none;">
+                            <span class="resumen-label">Empresa:</span>
+                            <span id="resumen-empresa" class="resumen-value"></span>
+                        </div>
+                        <div class="resumen-item" id="resumen-ruc-container" style="display: none;">
+                            <span class="resumen-label">RUC:</span>
+                            <span id="resumen-ruc" class="resumen-value"></span>
+                        </div>
+                    </div>
+                    <div class="form-group checkbox-group">
+                        <input type="checkbox" id="terminos" name="terminos" required>
+                        <label for="terminos">
+                            He leído y acepto los <a href="#" id="openTerms">términos y condiciones</a>, 
+                            la <a href="#" id="openPrivacy">política de privacidad</a> y autorizo el tratamiento 
+                            de mis datos personales conforme a la <a href="#" id="openDataLaw">Ley de Protección 
+                            de Datos Personales (Ley N° 29733)</a>.
+                        </label>
+                    </div>
+                    <div class="form-buttons">
+                        <button type="button" class="btn-prev">Atrás</button>
+                        <button type="submit" class="btn-submit">Enviar Registro</button>
+                    </div>
+                </div>
+            </form>
+
+            <div id="success-message" class="success-message" style="display: none;">
+                <i class="fas fa-check-circle"></i>
+                <h2>¡Registro completado con éxito!</h2>
+                <p>Gracias por unirte a CuidaLab. Te hemos enviado un correo de confirmación.</p>
+                <a href="index.html" class="btn-primary-large">Volver al inicio</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Modal para mostrar políticas -->
+    <div id="policyModal" class="modal">
+        <div class="modal-content">
+            <span class="close-modal">&times;</span>
+            <h2 id="modalTitle">Términos y Condiciones</h2>
+            <div class="modal-body" id="modalBody">
+                <!-- Contenido se cargará dinámicamente -->
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-logo">CuidaLab</div>
+                <div class="footer-links">
+                    <h4>Mapa del sitio</h4>
+                    <ul>
+                        <li><a href="index.html#nosotros">Nosotros</a></li>
+                        <li><a href="index.html#empresas">Para Empresas</a></li>
+                        <li><a href="index.html#candidatos">Para Candidatos</a></li>
+                        <li><a href="index.html#blog">Blog</a></li>
+                    </ul>
+                </div>
+                <div class="footer-contact">
+                    <h4>Contacto</h4>
+                    <p><i class="fas fa-envelope"></i> info@cuidalab.org</p>
+                    <p><i class="fas fa-phone"></i> +51 987 654 321</p>
+                    <p><i class="fas fa-map-marker-alt"></i> Av. Los Jardines 123, Santiago de Surco, Lima</p>
+                </div>
+                <div class="social-media">
+                    <h4>Síguenos</h4>
+                    <a href="#"><i class="fab fa-facebook"></i></a>
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                    <a href="#"><i class="fab fa-twitter"></i></a>
+                    <a href="#"><i class="fab fa-linkedin"></i></a>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 CuidaLab. Todos los derechos reservados.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script>
+        // Configuración para conectar con Google Sheets
+        const scriptURL = 'TU_SCRIPT_URL_DE_APPS_SCRIPT'; // Reemplazar con tu URL de Apps Script
+        
+        // Variables para el formulario
+        const formSteps = document.querySelectorAll('.form-step');
+        const progressSteps = document.querySelectorAll('.progress-step');
+        const btnNextList = document.querySelectorAll('.btn-next');
+        const btnPrevList = document.querySelectorAll('.btn-prev');
+        const form = document.getElementById('registroForm');
+        const successMessage = document.getElementById('success-message');
+        
+        // Variables para el modal
+        const modal = document.getElementById('policyModal');
+        const modalTitle = document.getElementById('modalTitle');
+        const modalBody = document.getElementById('modalBody');
+        const closeModal = document.querySelector('.close-modal');
+        const openTerms = document.getElementById('openTerms');
+        const openPrivacy = document.getElementById('openPrivacy');
+        const openDataLaw = document.getElementById('openDataLaw');
+        
+        // Contenido de las políticas
+        const policies = {
+            terms: {
+                title: "Términos y Condiciones de Uso",
+                content: `
+                    <h3>1. Aceptación de los Términos</h3>
+                    <p>Al registrarte en CuidaLab, aceptas cumplir con estos términos y condiciones. Si no estás de acuerdo, por favor no utilices nuestros servicios.</p>
+                    
+                    <h3>2. Uso del Servicio</h3>
+                    <p>CuidaLab proporciona apoyo integral para jóvenes cuidadores a través de diversos servicios descritos en nuestra plataforma.</p>
+                    
+                    <h3>3. Responsabilidades del Usuario</h3>
+                    <p>El usuario se compromete a:</p>
+                    <ul>
+                        <li>Proporcionar información veraz y actualizada</li>
+                        <li>No utilizar la plataforma para fines ilícitos</li>
+                        <li>Mantener la confidencialidad de su cuenta</li>
+                    </ul>
+                    
+                    <h3>4. Modificaciones</h3>
+                    <p>Nos reservamos el derecho de modificar estos términos en cualquier momento. Las actualizaciones serán publicadas en esta misma página.</p>
+                    
+                    <div class="policy-date">Última actualización: 15 de junio de 2025</div>
+                `
+            },
+            privacy: {
+                title: "Política de Privacidad",
+                content: `
+                    <h3>1. Información que Recopilamos</h3>
+                    <p>Recopilamos información personal que nos proporcionas voluntariamente al registrarte y usar nuestros servicios, incluyendo:</p>
+                    <ul>
+                        <li>Datos de identificación (nombres, apellidos, DNI)</li>
+                        <li>Información de contacto (email, teléfono)</li>
+                        <li>Datos académicos y laborales</li>
+                        <li>Información sobre la persona que cuidas</li>
+                    </ul>
+                    
+                    <h3>2. Uso de la Información</h3>
+                    <p>Utilizamos tu información para:</p>
+                    <ul>
+                        <li>Proveer y mejorar nuestros servicios</li>
+                        <li>Personalizar tu experiencia</li>
+                        <li>Comunicarnos contigo</li>
+                        <li>Cumplir con obligaciones legales</li>
+                    </ul>
+                    
+                    <h3>3. Protección de Datos</h3>
+                    <p>Implementamos medidas de seguridad técnicas y organizativas para proteger tu información personal.</p>
+                    
+                    <div class="policy-date">Última actualización: 15 de junio de 2025</div>
+                `
+            },
+            dataLaw: {
+                title: "Autorización de Tratamiento de Datos Personales",
+                content: `
+                    <h3>De conformidad con la Ley N° 29733 - Ley de Protección de Datos Personales</h3>
+                    <p>Al marcar la casilla de aceptación, autorizas expresamente a CuidaLab para que trate tus datos personales conforme a lo siguiente:</p>
+                    
+                    <h3>1. Finalidad del Tratamiento</h3>
+                    <p>Tus datos personales serán utilizados para:</p>
+                    <ul>
+                        <li>Gestionar tu registro en la plataforma</li>
+                        <li>Proveer los servicios solicitados</li>
+                        <li>Enviar información relevante sobre nuestros servicios</li>
+                        <li>Realizar estudios estadísticos</li>
+                        <li>Cumplir con obligaciones legales</li>
+                    </ul>
+                    
+                    <h3>2. Datos Sensibles</h3>
+                    <p>Los datos sobre salud (como la información CONADIS) son considerados sensibles según la ley. Su tratamiento se realizará con las máximas medidas de seguridad.</p>
+                    
+                    <h3>3. Derechos ARCO</h3>
+                    <p>Tienes derecho a:</p>
+                    <ul>
+                        <li><strong>Acceso:</strong> Solicitar información sobre tus datos almacenados</li>
+                        <li><strong>Rectificación:</strong> Actualizar o corregir tus datos</li>
+                        <li><strong>Cancelación:</strong> Solicitar la eliminación de tus datos</li>
+                        <li><strong>Oposición:</strong> Oponerte al tratamiento de tus datos</li>
+                    </ul>
+                    <p>Para ejercer estos derechos, escríbenos a protecciondedatos@cuidalab.org</p>
+                    
+                    <h3>4. Conservación de Datos</h3>
+                    <p>Tus datos serán conservados mientras mantengas una relación con CuidaLab o hasta que ejerzas tu derecho de cancelación.</p>
+                    
+                    <h3>5. Transferencia Internacional</h3>
+                    <p>En caso de que tus datos sean transferidos fuera del Perú, se garantizará un nivel adecuado de protección conforme a la ley.</p>
+                    
+                    <div class="policy-date">Última actualización: 15 de junio de 2025</div>
+                `
+            }
+        };
+        
+        // Mostrar/ocultar campos condicionales
+        document.getElementById('estudia-si').addEventListener('change', function() {
+            document.getElementById('institucion-container').style.display = this.checked ? 'block' : 'none';
+        });
+        
+        document.getElementById('estudia-no').addEventListener('change', function() {
+            document.getElementById('institucion-container').style.display = 'none';
+            document.getElementById('institucion').value = '';
+        });
+        
+        document.getElementById('trabaja-si').addEventListener('change', function() {
+            document.getElementById('empresa-container').style.display = 'block';
+            document.getElementById('ruc-container').style.display = 'block';
+        });
+        
+        document.getElementById('trabaja-no').addEventListener('change', function() {
+            document.getElementById('empresa-container').style.display = 'none';
+            document.getElementById('ruc-container').style.display = 'none';
+            document.getElementById('empresa').value = '';
+            document.getElementById('ruc').value = '';
+        });
+        
+        // Manejo del modal
+        openTerms.addEventListener('click', function(e) {
+            e.preventDefault();
+            showModal('terms');
+        });
+        
+        openPrivacy.addEventListener('click', function(e) {
+            e.preventDefault();
+            showModal('privacy');
+        });
+        
+        openDataLaw.addEventListener('click', function(e) {
+            e.preventDefault();
+            showModal('dataLaw');
+        });
+        
+        closeModal.addEventListener('click', function() {
+            modal.style.display = 'none';
+        });
+        
+        window.addEventListener('click', function(e) {
+            if (e.target === modal) {
+                modal.style.display = 'none';
+            }
+        });
+        
+        function showModal(policyType) {
+            modalTitle.textContent = policies[policyType].title;
+            modalBody.innerHTML = policies[policyType].content;
+            modal.style.display = 'block';
+        }
+        
+        // Navegación entre pasos
+        btnNextList.forEach(btn => {
+            btn.addEventListener('click', () => {
+                const currentStep = document.querySelector('.form-step.active');
+                const currentStepNumber = parseInt(currentStep.dataset.step);
+                
+                // Validar campos antes de avanzar
+                let isValid = true;
+                const inputs = currentStep.querySelectorAll('input[required]');
+                inputs.forEach(input => {
+                    if (!input.value) {
+                        input.classList.add('error');
+                        isValid = false;
+                    } else {
+                        input.classList.remove('error');
+                    }
+                });
+                
+                if (!isValid) {
+                    Swal.fire({
+                        icon: 'error',
+                        title: 'Campos requeridos',
+                        text: 'Por favor completa todos los campos obligatorios antes de continuar.',
+                        confirmButtonColor: '#8BC34A'
+                    });
+                    return;
+                }
+                
+                // Actualizar resumen en el último paso
+                if (currentStepNumber === 3) {
+                    updateSummary();
+                }
+                
+                // Cambiar al siguiente paso
+                currentStep.classList.remove('active');
+                document.querySelector(`.form-step[data-step="${currentStepNumber + 1}"]`).classList.add('active');
+                updateProgressBar(currentStepNumber + 1);
+            });
+        });
+        
+        btnPrevList.forEach(btn => {
+            btn.addEventListener('click', () => {
+                const currentStep = document.querySelector('.form-step.active');
+                const currentStepNumber = parseInt(currentStep.dataset.step);
+                
+                currentStep.classList.remove('active');
+                document.querySelector(`.form-step[data-step="${currentStepNumber - 1}"]`).classList.add('active');
+                updateProgressBar(currentStepNumber - 1);
+            });
+        });
+        
+        // Actualizar barra de progreso
+        function updateProgressBar(stepNumber) {
+            progressSteps.forEach(step => {
+                if (parseInt(step.dataset.step) <= stepNumber) {
+                    step.classList.add('active');
+                } else {
+                    step.classList.remove('active');
+                }
+            });
+        }
+        
+        // Actualizar resumen
+        function updateSummary() {
+            document.getElementById('resumen-nombres').textContent = document.getElementById('nombres').value;
+            document.getElementById('resumen-apellidos').textContent = document.getElementById('apellidos').value;
+            document.getElementById('resumen-direccion').textContent = document.getElementById('direccion').value;
+            document.getElementById('resumen-documento').textContent = document.getElementById('documento').value;
+            document.getElementById('resumen-email').textContent = document.getElementById('email').value;
+            document.getElementById('resumen-celular').textContent = document.getElementById('celular').value;
+            document.getElementById('resumen-nacimiento').textContent = document.getElementById('nacimiento').value;
+            document.getElementById('resumen-conadis').textContent = document.getElementById('conadis').value;
+            
+            const estudia = document.querySelector('input[name="estudia"]:checked').value;
+            document.getElementById('resumen-estudia').textContent = estudia;
+            
+            if (estudia === 'Sí') {
+                document.getElementById('resumen-institucion-container').style.display = 'flex';
+                document.getElementById('resumen-institucion').textContent = document.getElementById('institucion').value;
+            } else {
+                document.getElementById('resumen-institucion-container').style.display = 'none';
+            }
+            
+            const trabaja = document.querySelector('input[name="trabaja"]:checked').value;
+            document.getElementById('resumen-trabaja').textContent = trabaja;
+            
+            if (trabaja === 'Sí') {
+                document.getElementById('resumen-empresa-container').style.display = 'flex';
+                document.getElementById('resumen-ruc-container').style.display = 'flex';
+                document.getElementById('resumen-empresa').textContent = document.getElementById('empresa').value;
+                document.getElementById('resumen-ruc').textContent = document.getElementById('ruc').value;
+            } else {
+                document.getElementById('resumen-empresa-container').style.display = 'none';
+                document.getElementById('resumen-ruc-container').style.display = 'none';
+            }
+        }
+        
+        // Enviar formulario a Google Sheets
+        form.addEventListener('submit', e => {
+            e.preventDefault();
+            
+            if (!document.getElementById('terminos').checked) {
+                Swal.fire({
+                    icon: 'error',
+                    title: 'Términos no aceptados',
+                    text: 'Debes aceptar los términos y condiciones, política de privacidad y autorización de tratamiento de datos para continuar.',
+                    confirmButtonColor: '#8BC34A'
+                });
+                return;
+            }
+            
+            const formData = new FormData(form);
+            const data = {};
+            formData.forEach((value, key) => {
+                data[key] = value;
+            });
+            
+            // Añadir campos condicionales si no están presentes
+            if (!data.institucion) data.institucion = 'No aplica';
+            if (!data.empresa) data.empresa = 'No aplica';
+            if (!data.ruc) data.ruc = 'No aplica';
+            
+            // Agregar marca de tiempo y aceptación de políticas
+            data.fecha_registro = new Date().toISOString();
+            data.aceptacion_politicas = 'Aceptado';
+            
+            fetch(scriptURL, {
+                method: 'POST',
+                body: JSON.stringify(data),
+                headers: {
+                    'Content-Type': 'application/json'
+                }
+            })
+            .then(response => {
+                if (response.ok) {
+                    form.style.display = 'none';
+                    successMessage.style.display = 'block';
+                } else {
+                    throw new Error('Error en el servidor');
+                }
+            })
+            .catch(error => {
+                console.error('Error:', error);
+                Swal.fire({
+                    icon: 'error',
+                    title: 'Error al enviar',
+                    text: 'Ocurrió un error al enviar el formulario. Por favor intenta nuevamente.',
+                    confirmButtonColor: '#8BC34A'
+                });
+            });
+        });
+    </script>
+</body>
+</html>
